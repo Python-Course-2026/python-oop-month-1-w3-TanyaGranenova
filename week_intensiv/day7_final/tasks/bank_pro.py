@@ -45,4 +45,13 @@ class BankPro:
     """
     def transfer(self, from_acc, to_acc, amount):
         # ТВОЙ КОД ЗДЕСЬ
+        if isinstance(from_acc, BusinessAccount):
+            commission = amount * 0.05
+            withdraw_amount = amount + commission
+        else:
+            withdraw_amount = amount
+        if not from_acc.withdraw(withdraw_amount):
+            return "Ошибка"
+        to_acc._balance += amount
+        return "Успех"
         pass

@@ -24,11 +24,17 @@ class CRM:
 
     def get_client(self, client_id):
         # ТВОЙ КОД ЗДЕСЬ
-        pass
+        for client in self.clients:
+            if client.client_id == client_id:
+                return client
+        return None
 
     def delete_client(self, client_id):
         # ТВОЙ КОД ЗДЕСЬ
-        pass
+        client = self.get_client(client_id)
+        if client:
+            self.clients.remove(client)
+
 
     def update_client(self, client_id, **kwargs):
         """
@@ -36,4 +42,7 @@ class CRM:
         Используйте setattr(obj, key, value) для динамического обновления.
         """
         # ТВОЙ КОД ЗДЕСЬ
-        pass
+        client = self.get_client(client_id)
+        if client:
+            for key, value in kwargs.items():
+                setattr(client, key, value)

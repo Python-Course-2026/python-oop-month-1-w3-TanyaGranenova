@@ -15,8 +15,9 @@ class Developer(Employee):
     """
     def __init__(self, name, base_salary, bonus):
         # ТВОЙ КОД ЗДЕСЬ
-        pass
+        super().__init__(name, base_salary)
+        self.bonus = bonus
 
     def calculate_salary(self):
         # ТВОЙ КОД ЗДЕСЬ
-        pass
+        return self.base_salary + self.bonus
